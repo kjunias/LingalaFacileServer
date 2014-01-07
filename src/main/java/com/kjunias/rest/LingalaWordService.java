@@ -5,14 +5,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
  
-@Path("/hello")
-public class HelloWorldService {
+@Path("/lingala")
+public class LingalaWordService {
  
 	@GET
-	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String msg) {
+	@Path("/{definition}")
+	public Response getMsg(@PathParam("definition") String definition) {
  
-		String output = "Jersey say : " + msg;
+		String output = "Jersey say : " + definition;
  
 		return Response.status(200).entity(output).build();
  

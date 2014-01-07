@@ -12,6 +12,6 @@
  
 	<servlet-mapping>
 		<servlet-name>LingalaFacileServlet</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/word/*</url-pattern>
 	</servlet-mapping>
 </web-app>
