@@ -6,4 +6,4 @@
 *.ear
 /target
 /.classpath
-/bin
+bin/
