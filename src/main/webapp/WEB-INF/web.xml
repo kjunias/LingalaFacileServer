@@ -55,7 +55,4 @@
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 
-
-
-
 </web-app>
