@@ -1,4 +1,4 @@
-package com.kjunias;
+package com.kjunias.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
