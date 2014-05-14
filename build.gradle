@@ -33,8 +33,11 @@ dependencies {
 			"log4j:log4j:1.2.16",
 			"log4j:apache-log4j-extras:1.1",
 			"org.codehaus.jackson:jackson-mapper-asl:1.9.4",
+			
+			//Mysql database driver
 			"mysql:mysql-connector-java:5.1.30",
-    
+    		
+    		//Hibernate framework 
 			"org.hibernate:hibernate-core:4.3.4.Final"
 	)
     

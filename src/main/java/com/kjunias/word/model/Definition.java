@@ -1,4 +1,4 @@
-package com.kjunias.words;
+package com.kjunias.word.model;
 
 import java.util.ArrayList;
 

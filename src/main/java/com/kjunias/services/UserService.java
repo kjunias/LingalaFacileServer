@@ -1,6 +1,7 @@
 package com.kjunias.services;
 
-import com.kjunias.model.User;
+import com.kjunias.word.model.User;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.security.Principal;
 import java.util.*;
 
