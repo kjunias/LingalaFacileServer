@@ -1,4 +1,4 @@
-package com.kjunias.model;
+package com.kjunias.word.model;
 
 /**
  * A default user class
