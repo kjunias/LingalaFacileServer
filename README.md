@@ -1,4 +1,4 @@
 LingalaFacile
 =============
 
-Java Web App Ramp-Up project for Lingala Learning
+Java Web App Server for the LingalaFacile
