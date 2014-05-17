@@ -6,8 +6,5 @@
 /target
 /.classpath
 bin/
-.gradle
-build/
 .settings
 .project
-.classpath

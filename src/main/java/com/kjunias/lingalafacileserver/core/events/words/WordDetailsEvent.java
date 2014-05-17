@@ -2,7 +2,9 @@ package com.kjunias.lingalafacileserver.core.events.words;
 
 import java.util.UUID;
 
-public class WordDetailsEvent {
+import com.kjunias.lingalafacileserver.core.events.ReadEvent;
+
+public class WordDetailsEvent extends ReadEvent {
 	private UUID key;
 
 	public WordDetailsEvent(UUID key) {
@@ -16,5 +18,11 @@ public class WordDetailsEvent {
 
 	public void setKey(UUID key) {
 		this.key = key;
+	}
+
+	public static WordDetailsEvent notFound(UUID key) {
+		WordDetailsEvent ev = new WordDetailsEvent(key);
+		ev.entityFound = false;
+		return ev;
 	}
 }
