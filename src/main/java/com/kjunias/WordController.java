@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.kjunias.lingalafacileserver.core.domain.Word;
 
-import com.kjunias.word.model.Word;
 
 @Controller
-public class WordController {
+public class WordController{
     private static final String template = "Definition of %s";
 
     @RequestMapping("/words/{word}")
