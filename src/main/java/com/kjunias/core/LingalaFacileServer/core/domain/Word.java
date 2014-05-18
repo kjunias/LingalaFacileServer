@@ -2,8 +2,11 @@ package com.kjunias.core.LingalaFacileServer.core.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Word {
+	UUID wordKey;
+	
 	String word;
 	
 	List <Definition> defintions = new ArrayList<Definition>();
@@ -58,4 +61,13 @@ public class Word {
 	public void setDefintions(List<Definition> defintions) {
 		this.defintions = defintions;
 	}
+
+	public UUID getWordKey() {
+		return wordKey;
+	}
+
+	public void setWordKey(UUID wordKey) {
+		this.wordKey = wordKey;
+	}	
+	
 }
