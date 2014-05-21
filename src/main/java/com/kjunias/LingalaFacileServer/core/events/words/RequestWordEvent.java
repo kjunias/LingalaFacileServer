@@ -2,16 +2,21 @@ package com.kjunias.LingalaFacileServer.core.events.words;
 
 import java.util.UUID;
 
-public class WordRequestedEvent {
+public class RequestWordEvent {
 	private UUID key;
 	private boolean entityFound;
 	
-	public WordRequestedEvent(UUID key) {
+	
+	public RequestWordEvent(UUID key) {
 		this.key = key;
 	}
 
-	public static WordRequestedEvent wordNotFound(UUID key) {
-		WordRequestedEvent ev = new WordRequestedEvent(key);
+	public RequestWordEvent(String word) {
+		this.key = UUID.fromString(word);
+	}
+
+	public static RequestWordEvent wordNotFound(UUID key) {
+		RequestWordEvent ev = new RequestWordEvent(key);
 		ev.entityFound = false;
 		return ev;
 	}
