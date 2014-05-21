@@ -2,8 +2,6 @@ package com.kjunias.LingalaFacileServer.core.events.words;
 
 import java.util.UUID;
 
-import com.kjunias.LingalaFacileServer.core.events.orders.OrderDetailsEvent;
-
 public class WordDefinitionsEvent {
 	private UUID key;
 	private boolean entityFound;
