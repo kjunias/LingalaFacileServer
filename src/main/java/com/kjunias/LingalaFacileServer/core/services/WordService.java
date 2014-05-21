@@ -1,8 +1,7 @@
 package com.kjunias.LingalaFacileServer.core.services;
 
-import com.kjunias.LingalaFacileServer.core.events.words.RequestWordEvent;
-import com.kjunias.LingalaFacileServer.core.events.words.WordRequestedEvent;
+import com.kjunias.LingalaFacileServer.core.domain.Word;
 
 public interface WordService {
-	public WordRequestedEvent requestWord(RequestWordEvent requestWord);
+	public Word requestWord(String requestWord);
 }
