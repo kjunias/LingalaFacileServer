@@ -1,11 +1,12 @@
 package com.kjunias.LingalaFacileServer.test.rest.controller;
 
+import static com.kjunias.LingalaFacileServer.test.rest.controller.fixture.WordRestDataFixture.wordNotFound;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
-
-import java.util.UUID;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
-
 import com.kjunias.LingalaFacileServer.core.services.WordService;
 import com.kjunias.LingalaFacileServer.rest.controller.WordQueriesController;
 
@@ -28,7 +28,7 @@ public class ViewWordIntegrationTest {
 	@Mock
 	WordService wordService;
 	
-	UUID key = UUID.fromString("f3512d26-72f6-4290-9265-63ad69eccc13");
+	String testWord = "testWord";
 	
 	@Before
 	public void setup() {
@@ -38,7 +38,10 @@ public class ViewWordIntegrationTest {
 	
 	@Test
 	public void thatViewWordRequestUsesHttpNotFound() throws Exception {
-		this.mockMvc.perform(get("/words/{word}", key.toString())
+		when(wordService.requestWord((any(String.class))))
+				.thenReturn(wordNotFound());
+
+		this.mockMvc.perform(get("/words/{word}", testWord)
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print())
 				.andExpect(status().isNotFound());

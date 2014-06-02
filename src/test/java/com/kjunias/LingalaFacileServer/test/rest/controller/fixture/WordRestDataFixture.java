@@ -3,6 +3,7 @@ package com.kjunias.LingalaFacileServer.test.rest.controller.fixture;
 import java.util.UUID;
 
 import com.kjunias.LingalaFacileServer.core.domain.Definition;
+import com.kjunias.LingalaFacileServer.core.domain.Word;
 
 public class WordRestDataFixture {
 	public static final String WORD = "word";
@@ -13,6 +14,10 @@ public class WordRestDataFixture {
 	}
 	
 	public static String standardDefinitionJson () {
-		return "\"testkey\" : \"Definition of test key\"";
+		return "{\"testWord\" : \"Definition of testWord\"}";
+	}
+	
+	public static Word wordNotFound() {
+		return null;
 	}
 }
