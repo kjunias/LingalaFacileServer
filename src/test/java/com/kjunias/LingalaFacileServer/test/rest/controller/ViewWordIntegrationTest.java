@@ -1,6 +1,7 @@
 package com.kjunias.LingalaFacileServer.test.rest.controller;
 
 import static com.kjunias.LingalaFacileServer.test.rest.controller.fixture.WordRestDataFixture.wordNotFound;
+import static com.kjunias.LingalaFacileServer.test.rest.controller.fixture.WordRestDataFixture.wordRequested;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,7 +17,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
-import com.kjunias.LingalaFacileServer.core.services.WordService;
+
+import com.kjunias.LingalaFacileServer.core.services.WordServiceImpl;
 import com.kjunias.LingalaFacileServer.rest.controller.WordQueriesController;
 
 public class ViewWordIntegrationTest {
@@ -26,7 +28,7 @@ public class ViewWordIntegrationTest {
 	WordQueriesController controller;
 	
 	@Mock
-	WordService wordService;
+	WordServiceImpl wordService;
 	
 	String testWord = "testWord";
 	
@@ -45,5 +47,16 @@ public class ViewWordIntegrationTest {
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print())
 				.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	public void thatViewWordUsesHttpOK() throws Exception {
+		when(wordService.requestWord((any(String.class))))
+		.thenReturn(wordRequested());
+		
+		this.mockMvc.perform(get("/words/{word}", testWord)
+				.accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isOk());
 	}
 }

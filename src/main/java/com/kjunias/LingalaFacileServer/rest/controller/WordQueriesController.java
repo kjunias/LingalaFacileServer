@@ -14,7 +14,7 @@ import com.kjunias.LingalaFacileServer.core.domain.Word;
 import com.kjunias.LingalaFacileServer.core.services.WordServiceImpl;
 
 @Controller
-@RequestMapping("/words/{word}")
+@RequestMapping("/words")
 public class WordQueriesController {
 	private Logger LOG = LoggerFactory.getLogger(WordQueriesController.class);
 	@Autowired
@@ -23,7 +23,7 @@ public class WordQueriesController {
 	@RequestMapping(method = RequestMethod.GET, value = "/{word}")
     public ResponseEntity <Word> viewWord (@PathVariable String word) {
 		Word requestedWord = this.wordService.requestWord(word);
-		
+		LOG.debug("Requesting word " + word);
 		if(requestedWord == null) {
 			LOG.debug("Requested word not found");
 			return new ResponseEntity<Word>(HttpStatus.NOT_FOUND);
