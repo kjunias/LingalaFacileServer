@@ -2,36 +2,30 @@ package com.kjunias.LingalaFacileServer.core.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Word {
-	UUID wordKey;
-	
 	String word;
 	
-	List <Definition> defintions = new ArrayList<Definition>();
-	Type type;
+	List <Definition> definitions = new ArrayList<Definition>();
 	
 	public Word(String word, List <Definition> defintions, Type type) {
 		super();
 		this.word = word;
-		this.defintions = defintions;
-		this.type = type;
+		this.definitions = defintions;
 	}
 	
-	public Word(String word, Definition defintion, Type type) {
+	public Word(String word, Definition defintion) {
 		super();
 		this.word = word;
-		this.defintions.add(defintion);
-		this.type = type;
+		this.definitions.add(defintion);
 	}
 	
 	public void addDefinition (Definition definition) {
-		this.defintions.add(definition);
+		this.definitions.add(definition);
 	}
 	
 	public void removeDefinition (Definition definition) {
-		this.defintions.remove(definition);
+		this.definitions.remove(definition);
 	}
 
 	public String getWord() {
@@ -41,33 +35,12 @@ public class Word {
 	public void setWord(String word) {
 		this.word = word;
 	}
-
-	public Type getType() {
-		return type;
-	}
-
-	public String getStringType() {
-		return this.type.getType();
-	}
-
-	public void setType(Type type) {
-		this.type = type;
-	}
 	
-	public List<Definition> getDefintions() {
-		return defintions;
+	public List<Definition> getDefinitions() {
+		return definitions;
 	}
 
-	public void setDefintions(List<Definition> defintions) {
-		this.defintions = defintions;
+	public void setDefinitions(List<Definition> defintions) {
+		this.definitions = defintions;
 	}
-
-	public UUID getWordKey() {
-		return wordKey;
-	}
-
-	public void setWordKey(UUID wordKey) {
-		this.wordKey = wordKey;
-	}	
-	
 }

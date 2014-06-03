@@ -8,5 +8,7 @@ bin/
 .project
 .gradle
 .gradle/
+/.gradle
+/.gradle/
 bin
 build

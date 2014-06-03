@@ -9,8 +9,7 @@ import com.kjunias.LingalaFacileServer.core.domain.Word;
 public class WordServiceImpl implements WordService {
 	@Override
 	public Word requestWord(String requestedWord) {
-		Definition requestedWordDefintion = new Definition(UUID.randomUUID(), "New word definition");
-		TypeImpl type = new TypeImpl("NewWordType");
-		return new Word(requestedWord, requestedWordDefintion, type);
+		Definition defintion = new Definition(UUID.randomUUID(), new TypeImpl("NewWordType"), "New word definition");
+		return new Word(requestedWord, defintion);
 	}
 }

@@ -6,8 +6,11 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+
+import java.util.UUID;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +34,7 @@ public class ViewWordIntegrationTest {
 	WordServiceImpl wordService;
 	
 	String testWord = "testWord";
+	UUID defKey = UUID.fromString("f3512d26-72f6-4290-9265-63ad69eccc13");
 	
 	@Before
 	public void setup() {
@@ -45,7 +49,6 @@ public class ViewWordIntegrationTest {
 
 		this.mockMvc.perform(get("/words/{word}", testWord)
 				.accept(MediaType.APPLICATION_JSON))
-				.andDo(print())
 				.andExpect(status().isNotFound());
 	}
 	
@@ -57,6 +60,19 @@ public class ViewWordIntegrationTest {
 		this.mockMvc.perform(get("/words/{word}", testWord)
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print())
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void thatViewWordRendersCorrectly() throws Exception {
+		when(wordService.requestWord((any(String.class))))
+		.thenReturn(wordRequested());
+		
+		this.mockMvc.perform(get("/words/{word}", testWord)
+				.accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(jsonPath("$.word").value(testWord))
+				.andExpect(jsonPath("$..definitions[0].defKey").value(defKey.toString()))
 				.andExpect(status().isOk());
 	}
 }

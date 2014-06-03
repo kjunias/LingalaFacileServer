@@ -11,11 +11,11 @@ public class WordRestDataFixture {
 	
 	public static Definition standardDefintion() {
 		UUID defKey = UUID.randomUUID();
-		return new Definition(defKey, "Test Definition: " + defKey.toString());
+		return new Definition(defKey, new TypeImpl("NewWordTestType"), "Test Definition: " + defKey.toString());
 	}
 	
 	public static String standardDefinitionJson () {
-		return "{\"testWord\" : \"Definition of testWord\"}";
+		return "{\"word\" : \"testWord\", \"definition\" : \"Definition of testWord\"}";
 	}
 	
 	public static Word wordNotFound() {
@@ -24,7 +24,6 @@ public class WordRestDataFixture {
 	
 	public static Word wordRequested() {
 		return new Word("testWord", 
-			   new Definition(UUID.randomUUID(),"NewRequestedTestWord Defintion"), 
-			   new TypeImpl("NewRequestedTestWordType"));
+			   new Definition(UUID.fromString("f3512d26-72f6-4290-9265-63ad69eccc13"), new TypeImpl("NewRequestedTestWordType"), "NewRequestedTestWord Defintion"));
 	}
 }

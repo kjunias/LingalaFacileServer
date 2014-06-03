@@ -17,6 +17,7 @@ import com.kjunias.LingalaFacileServer.core.services.WordServiceImpl;
 @RequestMapping("/words")
 public class WordQueriesController {
 	private Logger LOG = LoggerFactory.getLogger(WordQueriesController.class);
+	
 	@Autowired
 	private WordServiceImpl wordService;
 	
@@ -28,6 +29,6 @@ public class WordQueriesController {
 			LOG.debug("Requested word not found");
 			return new ResponseEntity<Word>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity <Word> (HttpStatus.OK);
+		return new ResponseEntity <Word> (requestedWord, HttpStatus.OK);
 	}
 }
