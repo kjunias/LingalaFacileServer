@@ -10,17 +10,17 @@ import lombok.Data;
 @Data
 @Entity
 public class Translation {
-	
+
 	private String language;
 	private @Id String word;
-	
-	private HashMap <String, String> translations;
-	
+
+	private HashMap<String, String> translations;
+
 	public Translation(String language, String word) {
 		super();
 		this.language = language;
 		this.word = word;
-		this.translations = new HashMap <String, String> ();
+		this.translations = new HashMap<String, String>();
 	}
 
 	public String getLanguage() {
@@ -46,5 +46,5 @@ public class Translation {
 	public void setTranslations(HashMap<String, String> translations) {
 		this.translations = translations;
 	}
-	
+
 }
