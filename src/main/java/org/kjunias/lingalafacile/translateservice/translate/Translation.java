@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.word;
+package org.kjunias.lingalafacile.translateservice.translate;
 
 import java.util.HashMap;
 
@@ -21,6 +21,10 @@ public class Translation {
 		this.language = language;
 		this.word = word;
 		this.translations = new HashMap<String, String>();
+	}
+
+	public Translation() {
+		super();
 	}
 
 	public String getLanguage() {
