@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.translate;
+package org.kjunias.lingalafacile.translateservice.word;
 
 import org.slf4j.Logger;
 import org.springframework.boot.CommandLineRunner;
@@ -13,10 +13,10 @@ class LoadDatabase {
 	private static final Logger log = org.slf4j.LoggerFactory.getLogger(LoadDatabase.class);
 
 	@Bean
-	CommandLineRunner initDatabase(TranslationRepository repository) {
+	CommandLineRunner initDatabase(WordRepository repository) {
 		return args -> {
-			log.info("Preloading " + repository.save(new Translation("Lingala", "mbote")));
-			log.info("Preloading " + repository.save(new Translation("Lingala", "kobina")));
+			log.info("Preloading " + repository.save(new Word("Lingala", "mbote")));
+			log.info("Preloading " + repository.save(new Word("Lingala", "kobina")));
 		};
 	}
 }

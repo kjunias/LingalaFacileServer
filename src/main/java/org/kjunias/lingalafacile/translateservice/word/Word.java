@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.translate;
+package org.kjunias.lingalafacile.translateservice.word;
 
 import java.util.HashMap;
 
@@ -9,21 +9,21 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Translation {
+public class Word {
 
 	private String language;
 	private @Id String word;
 
 	private HashMap<String, String> translations;
 
-	public Translation(String language, String word) {
+	public Word(String language, String word) {
 		super();
 		this.language = language;
 		this.word = word;
 		this.translations = new HashMap<String, String>();
 	}
 
-	public Translation() {
+	public Word() {
 		super();
 	}
 
