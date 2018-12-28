@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.translate;
+package org.kjunias.lingalafacile.translateservice.word;
 
 import java.util.List;
 
@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TranslationController {
 
-	private final TranslationRepository repository;
+	private final WordRepository repository;
 
-	TranslationController(TranslationRepository repository) {
+	TranslationController(WordRepository repository) {
 		this.repository = repository;
 	}
 
 	// Aggregate root
 	@GetMapping("/translateAll")
-	List<Translation> all() {
+	List<Word> all() {
 		return repository.findAll();
 	}
 
 	// Single item
 	@GetMapping("/translate/{word}")
-	Translation one(@PathVariable String word) {
+	Word one(@PathVariable String word) {
 		return repository.findById(word).get();
 	}
 
