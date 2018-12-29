@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.word;
+package org.kjunias.lingalafacile.translateservice.model;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
