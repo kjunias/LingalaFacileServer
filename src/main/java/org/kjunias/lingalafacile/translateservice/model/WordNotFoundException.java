@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.word;
+package org.kjunias.lingalafacile.translateservice.model;
 
 public class WordNotFoundException extends RuntimeException  {
 

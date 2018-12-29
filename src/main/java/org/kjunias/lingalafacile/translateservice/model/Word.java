@@ -1,4 +1,4 @@
-package org.kjunias.lingalafacile.translateservice.word;
+package org.kjunias.lingalafacile.translateservice.model;
 
 import java.util.HashMap;
 
