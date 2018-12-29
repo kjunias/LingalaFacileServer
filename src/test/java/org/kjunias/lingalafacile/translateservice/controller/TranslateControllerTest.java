@@ -42,7 +42,5 @@ public class TranslateControllerTest {
 		mockMvc.perform(get("/translate/kobina")).andExpect(status().isOk())
 				.andExpect(jsonPath("$.language", Matchers.is("Lingala")))
 				.andExpect(jsonPath("$.word", Matchers.is("kobina")));
-
 	}
-
 }
