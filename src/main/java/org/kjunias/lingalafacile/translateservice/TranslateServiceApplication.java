@@ -21,7 +21,7 @@ public class TranslateServiceApplication {
 	private static Logger logger = LoggerFactory.getLogger(TranslateServiceApplication.class);
 
 	public static void main(String[] args) {
-		initDatabase();
+//		initDatabase();
 		SpringApplication.run(TranslateServiceApplication.class, args);
 	}
 
