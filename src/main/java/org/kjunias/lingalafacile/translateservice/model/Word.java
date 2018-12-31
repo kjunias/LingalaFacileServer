@@ -2,17 +2,15 @@ package org.kjunias.lingalafacile.translateservice.model;
 
 import java.util.HashMap;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-import lombok.Data;
-
-@Data
-@Entity
+@Table
 public class Word {
 
 	private String language;
-	private @Id String word;
+	@PrimaryKey
+	private String word;
 
 	private HashMap<String, String> translations;
 
