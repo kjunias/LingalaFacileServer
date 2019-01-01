@@ -1,9 +1,15 @@
 package org.kjunias.lingalafacile.translateservice.config;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
+import org.springframework.data.cassandra.config.SchemaAction;
+import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecification;
+import org.springframework.data.cassandra.core.cql.keyspace.DropKeyspaceSpecification;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
@@ -17,6 +23,11 @@ class CassandraDatabaseConfig extends AbstractCassandraConfiguration {
 	@Value("${spring.data.cassandra.keyspace-name}")
 	private String keyspaceName;
 
+	@Value("${spring.data.cassandra.schema-action}")
+	private String schemaAction;
+
+	private final long REPLICATION_FACTOR = 3;
+
 	@Override
 	public String getContactPoints() {
 		return this.contactPoints;
@@ -25,6 +36,23 @@ class CassandraDatabaseConfig extends AbstractCassandraConfiguration {
 	@Override
 	public String getKeyspaceName() {
 		return this.keyspaceName;
+	}
+
+	@Override
+	public SchemaAction getSchemaAction() {
+		return SchemaAction.CREATE_IF_NOT_EXISTS;
+	}
+
+	@Override
+	protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
+		CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace(this.keyspaceName)
+				.withSimpleReplication(REPLICATION_FACTOR);
+		return Arrays.asList(specification);
+	}
+
+	@Override
+	protected List<DropKeyspaceSpecification> getKeyspaceDrops() {
+		return Arrays.asList(DropKeyspaceSpecification.dropKeyspace(this.keyspaceName));
 	}
 
 	@Override
