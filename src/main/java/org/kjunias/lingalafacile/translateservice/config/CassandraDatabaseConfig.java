@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
 import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecification;
-import org.springframework.data.cassandra.core.cql.keyspace.DropKeyspaceSpecification;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
@@ -46,14 +45,14 @@ class CassandraDatabaseConfig extends AbstractCassandraConfiguration {
 	@Override
 	protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
 		CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace(this.keyspaceName)
-				.withSimpleReplication(REPLICATION_FACTOR);
+				.ifNotExists().withSimpleReplication(REPLICATION_FACTOR);
 		return Arrays.asList(specification);
 	}
 
-	@Override
-	protected List<DropKeyspaceSpecification> getKeyspaceDrops() {
-		return Arrays.asList(DropKeyspaceSpecification.dropKeyspace(this.keyspaceName));
-	}
+    @Override
+    public String[] getEntityBasePackages() {
+        return new String[]{"org.kjunias.lingalafacile.translateservice.model"};
+    }
 
 	@Override
 	protected boolean getMetricsEnabled() {
