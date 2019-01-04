@@ -1,22 +1,27 @@
 [
 	{
 		"language": "Lingala",
-		"word": "mbote"
+		"word": "mbote",
+		"translations": { "english" : "hello", "francais" : "bonjour" , "espanol" : "hola" }
 	},
 	{
 		"language": "Lingala",
-		"word": "kobina"
+		"word": "kobina",
+		"translations": { "english" : "dance", "francais" : "danser" }
 	},
 	{
 		"language": "Lingala",
-		"word": "bolingo"
+		"word": "bolingo",
+		"translations": { "english" : "love", "francais" : "amour" }
 	},
 	{
 		"language": "Lingala",
-		"word": "mwasi"
+		"word": "mwasi",
+		"translations": { "english" : "woman", "francais" : "femme" }
 	},
 	{
 		"language": "Lingala",
-		"word": "mboka"
+		"word": "mboka",
+		"translations": { "english" : "country", "francais" : "pays" }
 	}
 ]
