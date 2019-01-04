@@ -1,5 +1,6 @@
 package org.kjunias.lingalafacile.translateservice.config;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,7 +9,6 @@ import javax.annotation.PostConstruct;
 import org.kjunias.lingalafacile.translateservice.model.Word;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -17,6 +17,9 @@ import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecification;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -72,9 +75,15 @@ class CassandraDatabaseConfig extends AbstractCassandraConfiguration {
 	public void initDatabase() throws Exception {
 		this.logger.info("Initializing database");
 		CassandraOperations cassandraOperations = this.cassandraTemplate();
-		Word mbote = new Word("Lingala", "mbote");
-		Word kobina = new Word("Lingala", "kobina");
-		cassandraOperations.insert(mbote);
-		cassandraOperations.insert(kobina);
+
+		ObjectMapper mapper = new ObjectMapper();
+		TypeReference<List<Word>> typeReference = new TypeReference<List<Word>>() {};
+		InputStream inputStream = TypeReference.class.getResourceAsStream("/data/words.json");
+
+		List<Word> words = mapper.readValue(inputStream, typeReference);
+
+		for (Word word: words) {
+			cassandraOperations.insert(word);
+		}
 	}
 }
