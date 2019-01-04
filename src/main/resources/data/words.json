@@ -1,7 +1,8 @@
 [
 	{
 		"language": "Lingala",
-		"word": "mbote"
+		"word": "mbote",
+		"translations": { "english" : "Hello", "francais" : "Bonjour" }
 	},
 	{
 		"language": "Lingala",

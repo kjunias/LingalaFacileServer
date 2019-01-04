@@ -1,6 +1,7 @@
 package org.kjunias.lingalafacile.translateservice.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -12,7 +13,7 @@ public class Word {
 	@PrimaryKey
 	private String word;
 
-	private HashMap<String, String> translations;
+	private Map<String, String> translations;
 
 	public Word(String language, String word) {
 		super();
@@ -41,7 +42,7 @@ public class Word {
 		this.word = word;
 	}
 
-	public HashMap<String, String> getTranslations() {
+	public Map<String, String> getTranslations() {
 		return translations;
 	}
 
