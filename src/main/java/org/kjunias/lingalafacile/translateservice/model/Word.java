@@ -49,4 +49,8 @@ public class Word {
 		this.translations = translations;
 	}
 
+	public void addTranslation(String language, String translation) {
+		this.translations.put(language, translation);
+	}
+
 }
